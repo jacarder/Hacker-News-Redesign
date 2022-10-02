@@ -1,0 +1,20 @@
+.news-banner-content {
+	.points-upvote-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-right: 10px;
+		.upvote {
+			cursor: pointer;
+		}
+		.points {
+			display: flex;
+		}
+	}
+	.meta-data-link-container {
+		margin-left: 10px;
+		display: flex;
+		align-items: flex-end;
+		gap: 10px;
+	}
+}
