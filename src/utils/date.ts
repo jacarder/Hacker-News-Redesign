@@ -36,9 +36,10 @@ export const createTimeLabel = (
 		minutes: minutes,
 		seconds: seconds
 	};
-	const selectedTimeText = Object.keys(time).find(
-		(key, index) => time[key as keyof TimeCollection] !== 0
+	const keys = Object.keys as <T>(obj: T) => Array<keyof T>
+	const selectedTimeText = keys(time).find(
+		(key, index) => time[key] !== 0
 	);
-	return `${time[selectedTimeText as keyof TimeCollection]
+	return `${time[selectedTimeText!]
 		} ${selectedTimeText} ago`;
 };
