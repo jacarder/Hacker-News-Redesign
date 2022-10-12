@@ -8,18 +8,18 @@ import { useEffect, useState } from "react"
  * @param subscription onValue change method from firebase
  * @returns val() as T returned from firebase onValue change
  */
-export const useSubscription = <T>(subscription: (callback: (snapshot: DataSnapshot) => void) => Promise<Unsubscribe>) => {
+export const useSubscription = <T>(subscription: (callback: (snapshot: DataSnapshot) => void) => Unsubscribe) => {
 	const [data, setData] = useState<T>()
 	useEffect(() => {
+
 		const unsubscribe = subscription((data) => {
-			setData(data.val() as T);
+			setData(data.val());
 		})
+
 		return () => {
-			unsubscribe.then();
+			unsubscribe()
 		}
-		// We only want subscription to subscribe once
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [])
+	}, [subscription])
 	//	TODO maybe pass back the unsubscribe method to allow manual unsubscribe.
 	return [data]
 }
