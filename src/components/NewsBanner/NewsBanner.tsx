@@ -10,10 +10,10 @@ type Props = {
 	timeoutMultiplier: number
 }
 const NewsBanner = ({ postId, timeoutMultiplier }: Props) => {
-	const [newsData, setNewsData] = useState<INewsPost>({} as INewsPost);
+	const [newsData, setNewsData] = useState<INewsPost>();
 	useEffect(() => {
 		const getData = async () => {
-			setNewsData(await HackerNewsService.getItemById(postId).value<INewsPost>())
+			setNewsData(await HackerNewsService.getItemById.value<INewsPost>(postId))
 		}
 		getData();
 	}, [postId])
@@ -23,7 +23,7 @@ const NewsBanner = ({ postId, timeoutMultiplier }: Props) => {
 			<Grow in timeout={500 * timeoutMultiplier}>
 				<Card className="card-style">
 					{
-						newsData.title ?
+						newsData ?
 							<NewsBannerContent {...newsData} />
 							: <Skeleton />
 					}
