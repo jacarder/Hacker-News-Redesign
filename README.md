@@ -15,7 +15,11 @@ Utilizing the [Hacker News API](https://github.com/HackerNews/API) via [Firebase
 ## Thoughts that keep me up at night
 
 - Material UI... Do I utilize the props for styling? Or is it better to create separate file? Or is styled components the way to go?
-- The original site seems to be using some other unix time to handle displaying of date.
+- Javascript dates... Thanks to the unit tests I found out the calculations of months and years were off. Would need to investigate a way to handle that. Until then seconds, minutes, and days to display will have to do.
+
+## Time
+
+- 8 - 9 hours
 
 ## Available Scripts
 
